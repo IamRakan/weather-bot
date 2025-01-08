@@ -4,12 +4,12 @@ import sys
 from telegram import Update, Message
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 from datetime import datetime
-import conf
+from decouple import config
 
 # Replace 'YOUR_API_KEY' with your WeatherAPI key
-WEATHER_API_KEY = conf.WEATHER_API_KEY
+WEATHER_API_KEY = config('WEATHER_API_KEY')
 # Replace 'YOUR_BOT_TOKEN' with your Telegram bot token
-TELEGRAM_BOT_TOKEN = conf.TELEGRAM_BOT_TOKEN
+TELEGRAM_BOT_TOKEN = config('TELEGRAM_BOT_TOKEN')
 
 async def get_weather(city):
     url = f'http://api.weatherapi.com/v1/current.json?key={WEATHER_API_KEY}&q={city}'
